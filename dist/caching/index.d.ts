@@ -18,4 +18,5 @@ export declare class Caching {
     json(): CachingJson;
     getOptions(): CachingOptions;
     setOptions(options: CachingOptions): void;
+    setTTL(ttl: number): void;
 }

@@ -19,7 +19,7 @@ export class Caching {
   public set(
     key: CachingKey,
     value: CachingValueTypes,
-    ttl = this.options.ttl
+    ttl = this.options.ttl,
   ) {
     if (ttl < 0) {
       ttl = 0;
@@ -73,8 +73,8 @@ export class Caching {
     callbackfn: (
       value: CachingValueTypes,
       key: CachingKey,
-      map: CachingMap
-    ) => void
+      map: CachingMap,
+    ) => void,
   ) {
     this.cache.forEach((value, key) => {
       callbackfn(value.value, key, this.cache);
@@ -105,6 +105,10 @@ export class Caching {
   }
 
   public setOptions(options: CachingOptions) {
-    this.options = options;
+    this.options = { ...this.options, ...options };
+  }
+
+  public setTTL(ttl: number) {
+    this.options.ttl = ttl;
   }
 }

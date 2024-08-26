@@ -71,7 +71,10 @@ class Caching {
         return this.options;
     }
     setOptions(options) {
-        this.options = options;
+        this.options = Object.assign(Object.assign({}, this.options), options);
+    }
+    setTTL(ttl) {
+        this.options.ttl = ttl;
     }
 }
 exports.Caching = Caching;
