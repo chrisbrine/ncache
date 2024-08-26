@@ -1,6 +1,6 @@
 {
   "name": "@strbjun/ncache",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A basic caching platform with namespace support",
   "source": "src/index.ts",
   "main": "dist/index.js",
