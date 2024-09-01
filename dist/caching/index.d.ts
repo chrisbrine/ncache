@@ -1,22 +1,22 @@
-import { CachingMap, CachingValue, CachingKey, CachingOptions, CachingValueTypes, CachingJson } from "../types";
+import { CachingKey, CachingOptions, CachingValueTypes, CachingJson, CachingForEachFn } from "../types";
 export declare class Caching {
-    private cache;
+    private space;
     private options;
-    constructor(options?: CachingOptions);
-    set(key: CachingKey, value: CachingValueTypes, ttl?: number): void;
-    get(key: CachingKey): CachingValueTypes | null;
-    delete(key: CachingKey): void;
-    clear(): void;
-    size(): number;
-    keys(): IterableIterator<string>;
-    values(): IterableIterator<CachingValue>;
-    entries(): IterableIterator<[string, CachingValue]>;
-    has(key: CachingKey): boolean;
-    forEach(callbackfn: (value: CachingValueTypes, key: CachingKey, map: CachingMap) => void): void;
-    [Symbol.iterator](): IterableIterator<[string, CachingValue]>;
-    all(): CachingMap;
-    json(): CachingJson;
+    private db;
+    constructor(space?: string, options?: CachingOptions);
+    set(key: CachingKey, value: CachingValueTypes, ttl?: number): Promise<void>;
+    get(key: CachingKey): Promise<CachingValueTypes | null>;
+    delete(key: CachingKey): Promise<void>;
+    clear(): Promise<void>;
+    size(): Promise<number>;
+    keys(): Promise<string[]>;
+    values(): Promise<CachingValueTypes[]>;
+    entries(): Promise<[string, CachingValueTypes][]>;
+    has(key: CachingKey): Promise<boolean>;
+    forEach(callbackfn: CachingForEachFn): Promise<void>;
+    json(): Promise<CachingJson>;
     getOptions(): CachingOptions;
     setOptions(options: CachingOptions): void;
+    getTTL(): number;
     setTTL(ttl: number): void;
 }

@@ -1,6 +1,6 @@
 # nCache
 
-This is a basic caching library with namespace support and TTL expire support.
+This is a basic caching library with namespace support and TTL expire support. This stores in an SQL database and can be done in either memory or in a specified file.
 
 ## How to use
 
@@ -8,12 +8,26 @@ There are two classes, [Caching] and [CachingSpaces].
 
 Caching is just for basic caching without namespaces. If you want namespaces, then use CachingSpaces.
 
+## Whats New in 1.0.0
+
+Finally, a full version. The previous version is not compatible with this one but this is a more final form. Reason? Added promises and async/await support to the functions and classes. This will remain in place and is the final form for v1.
+
 ### Caching
 
 Basic functionality would be:
 `const caching = new Caching(Options)`
 
+Options:
+
+```
+{
+  ttl: number for time until expiry
+  sql: filename for sql database
+}
+```
+
 - Options would include an option of `ttl` in order to set the amount of time until a caching setting expires
+- Can also set an option on the caching options of 'sql' which directs to an SQL file, otherwise it will store in memory
   `caching.set(Key, Value)`
 - Key is the key value for what to set it to. It tends to be a string.
 - Value is the value to set the key to which can be a string, number, boolean, array, or object
@@ -51,8 +65,3 @@ The basic functionality for this would be:
 - Sets the caching value to the caching key within the given namespace
   `spaces.delete(namespace, key)`
 - Deletes the given caching key from the given namespace
-
-## Todo
-
-- Need to complete the documentation and testing
-- Add persistent storage support

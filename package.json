@@ -1,7 +1,7 @@
 {
   "name": "@strbjun/ncache",
-  "version": "0.1.2",
-  "description": "A basic caching platform with namespace support",
+  "version": "1.0.0",
+  "description": "A basic caching platform with namespace support and SQL based persistent storage whether in memory or a file.",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,5 +32,8 @@
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "better-sqlite3": "^11.2.1",
+    "sqlite3": "^5.1.7"
+  }
 }
